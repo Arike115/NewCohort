@@ -1,62 +1,76 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("This class is strictly C# base");
-MyMethod();
+﻿Console.WriteLine();
 
-//datatypes
-//string
-//interger int
-//decimal
-//float
-//bool 
-//double
-//char
-//long
-//byte
-
-string word = "chalk";
-Console.WriteLine(word);
-
-int v = 53645399;
-
-double x = 23;
-
-decimal y = 2145231423656235.435m;
-float number = 663286217487234.90f;
-bool check = false;
-
-char n = 'a';
-byte s = 35;
-long r = 7828782362778732;
+//Type casting
+//implicit casting => converting smaller values to larger values
+//explicit casting => converting larger values to smaller values
 
 
-//array
-string[] result = { "pen", "biro", "chalk", "duster", "book" };
+//implicit
+int mydata = 23; //field
 
-foreach (string abiola in result)
-{
-    Console.WriteLine(abiola);
-}
+double myresult = mydata;
+//Console.WriteLine(mydata);
+//Console.WriteLine(myresult);
+
+
+////explicit
+//double v = 56.300;
+//int x = (int)v;
+//Console.WriteLine(v);
+//Console.WriteLine(x);
 
 
 
+//Console.WriteLine("Enter your FullName");
+//string name = Console.ReadLine();
+
+//Console.WriteLine("Good Morning" + " "+ name);
+
+//Arithmetic operators
+//relational operators
+//logical operators
+//assignment operators
 
 
+//Arithmetic operators
+//+,-,*,/,%,++,--
 
+int y = 789;
+int x = 453;
+int n = 50;
 
+int z = y + n;
+Console.WriteLine(z);
+int q = y - x;
+Console.WriteLine(q);
+int c = y / n;
+Console.WriteLine(c);
+int d = n * x * y;
+Console.WriteLine(d);
+int o = y % n;
+Console.WriteLine(0);
+q++;
+Console.WriteLine(q);
+c--;
+Console.WriteLine(c);
 
+//Relationaloperators
+//==
+//!=
+//> <
+//>= =<
 
+//logical operators
+//&&
+//||
+//!
 
-
-
-
-
-static void MyMethod()
-{
-    Console.WriteLine("weclome to C# class, learn new syntax");
-   /* Console.WriteLine("");
-    Console.WriteLine("");
-    Console.WriteLine("");
-    Console.WriteLine("");*/
-}
-
+//assignment operators
+//=
+//+=
+//*=
+//-=
+///=
+//%=
+y *=5;
+Console.WriteLine("the result is " + y);
