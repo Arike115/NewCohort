@@ -1,60 +1,4 @@
-﻿Console.WriteLine();
-
-//Type casting
-//implicit casting => converting smaller values to larger values
-//explicit casting => converting larger values to smaller values
-
-
-//implicit
-int mydata = 23; //field
-
-double myresult = mydata;
-//Console.WriteLine(mydata);
-//Console.WriteLine(myresult);
-
-
-////explicit
-//double v = 56.300;
-//int x = (int)v;
-//Console.WriteLine(v);
-//Console.WriteLine(x);
-
-
-
-//Console.WriteLine("Enter your FullName");
-//string name = Console.ReadLine();
-
-//Console.WriteLine("Good Morning" + " "+ name);
-
-//Arithmetic operators
-//relational operators
-//logical operators
-//assignment operators
-
-
-//Arithmetic operators
-//+,-,*,/,%,++,--
-
-int y = 789;
-int x = 453;
-int n = 50;
-
-int z = y + n;
-Console.WriteLine(z);
-int q = y - x;
-Console.WriteLine(q);
-int c = y / n;
-Console.WriteLine(c);
-int d = n * x * y;
-Console.WriteLine(d);
-int o = y % n;
-Console.WriteLine(0);
-q++;
-Console.WriteLine(q);
-c--;
-Console.WriteLine(c);
-
-//Relationaloperators
+﻿//Relationaloperators
 //==
 //!=
 //> <
@@ -64,13 +8,53 @@ Console.WriteLine(c);
 //&&
 //||
 //!
+//statement
+//conditional statement
+//if&if-else
+//switch case
+double v = 89.90;
+double x = 20.50;
 
-//assignment operators
-//=
-//+=
-//*=
-//-=
-///=
-//%=
-y *=5;
-Console.WriteLine("the result is " + y);
+string word = "chalk";
+string data = "chalk";
+
+if(word == data ||  x > v)
+{
+    Console.WriteLine("they are equal");
+}
+else
+{
+    Console.WriteLine("they are not equal");
+}
+
+
+if (v >= x)
+    Console.WriteLine("we have greater values here");
+else
+    Console.WriteLine("we do not have higher values here ");
+
+
+//switch case
+int day = 6;
+
+switch (day)
+{ 
+
+    case 1:
+        Console.WriteLine("Monday");
+        break;
+    case 2:
+        Console.WriteLine("Tuesday");
+        break;
+    case 3:
+        Console.WriteLine("wednesday");
+        break;
+    case 4:
+        Console.WriteLine("Thursday");
+        break;
+        default: 
+        Console.WriteLine("not on the list");
+        break;
+
+}
+
