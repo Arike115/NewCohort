@@ -1,60 +1,51 @@
-﻿//Relationaloperators
-//==
-//!=
-//> <
-//>= =<
+﻿//Loops
+//while
+//do/while
+//for
+//foreach
 
-//logical operators
-//&&
-//||
-//!
-//statement
-//conditional statement
-//if&if-else
-//switch case
-double v = 89.90;
-double x = 20.50;
+//while
 
-string word = "chalk";
-string data = "chalk";
+using NewCohort;
 
-if(word == data ||  x > v)
+int v = 0;
+while(v < 10)
 {
-    Console.WriteLine("they are equal");
+    Console.WriteLine(v);
+    v++;
 }
-else
+
+Console.WriteLine("******************************");
+//do/while
+
+int i  = 0;
+
+do
 {
-    Console.WriteLine("they are not equal");
+    Console.WriteLine(i);
+    i++;
+}
+while(i < 10);
+
+
+
+Console.WriteLine("*******************FOR**************************");
+//for
+
+for (int x = 0; x < 20; x+=2)
+{
+    Console.WriteLine(x);
 }
 
 
-if (v >= x)
-    Console.WriteLine("we have greater values here");
-else
-    Console.WriteLine("we do not have higher values here ");
+//static values
+Employee.Calculator();
+
+Student.Result();
+
+//non-static
+Student student = new Student();
+student.Result1();
 
 
-//switch case
-int day = 6;
-
-switch (day)
-{ 
-
-    case 1:
-        Console.WriteLine("Monday");
-        break;
-    case 2:
-        Console.WriteLine("Tuesday");
-        break;
-    case 3:
-        Console.WriteLine("wednesday");
-        break;
-    case 4:
-        Console.WriteLine("Thursday");
-        break;
-        default: 
-        Console.WriteLine("not on the list");
-        break;
-
-}
-
+Console.ReadKey();

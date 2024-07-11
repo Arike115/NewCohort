@@ -7,20 +7,31 @@ using System.Threading.Tasks;
 
 namespace NewCohort
 {
-    internal class Student
+    public class Student
     {
+        public Student()
+        {
+            
+        }
+        public Student(int v )
+        {
+            
+        }
+        //members of a class
         //fields
+        public static int v = 23;
         //properties
+        public string id {  get; set; }
 
 
         //constructors
 
 
-        public void Result()
+        public static void Result()
         {
             //fields
         }
-        public void Result1()
+       public void Result1()
         {
 
         }
