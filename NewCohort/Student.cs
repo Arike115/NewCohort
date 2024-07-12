@@ -7,40 +7,24 @@ using System.Threading.Tasks;
 
 namespace NewCohort
 {
-    public class Student
+    public class Student : School
     {
-        public Student()
+        public static string Name;
+        public static int Age;
+        public static void StudentDetails()
         {
-            
-        }
-        public Student(int v )
-        {
-            
-        }
-        //members of a class
-        //fields
-        public static int v = 23;
-        //properties
-        public string id {  get; set; }
-
-
-        //constructors
-
-
-        public static void Result()
-        {
-            //fields
-        }
-       public void Result1()
-        {
-
-        }
-        public void Result2()
-        {
-
+            Name = "Ben";
+            Age = 12;
+            Console.WriteLine("my name is {0}, and i'm {1} years old",Name, Age);
         }
 
     }
 
-   
+    public class School
+    { 
+    
+    
+    
+    }
+
 }
