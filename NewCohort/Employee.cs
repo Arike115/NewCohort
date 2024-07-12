@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace NewCohort
 {
-    public class Employee : Student
+    public class Employee : ward, ISchool, IStudent
     {
         public static string TeacherName;
         public static int level;
+
+        public string Name => throw new NotImplementedException();
 
         public static void TeacherDetails()
         {
@@ -22,5 +24,23 @@ namespace NewCohort
         {
             Console.WriteLine("the class rep name is" + name);
         }
+
+        public void Departmments()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Faculty()
+        {
+            throw new NotImplementedException();
+        }
     }
+
+    public class ward()
+    { 
+    
+    
+    
+    }
+
 }
