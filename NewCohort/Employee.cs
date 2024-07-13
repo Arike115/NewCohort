@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 
 namespace NewCohort
 {
-    public class Employee<P>
+    //delegate
+    public delegate bool IsPromotable(Employee m);
+
+    //class
+    public class Employee
     {
-       
-        public static void ClassRep(P name)
-        {
-            Console.WriteLine("the class rep name is" + name);
-        }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public int Experience  { get; set; }
 
-        public void Departmments()
-        {
-            Console.WriteLine();
-        }
 
-       
+        public static void  PromoteStaff (List<Employee> stafflist, IsPromotable EligibleToPromote)
+        {
+            foreach(var emp in stafflist)
+            {
+                if(EligibleToPromote(emp))
+                {
+                    Console.WriteLine(emp.Name +" " +" is promoted");
+                }
+                else
+                {
+                    Console.WriteLine(emp.Name + " " + "not promoted");
+                }
+            }
+        }
     }
 
   
