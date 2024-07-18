@@ -1,61 +1,26 @@
-﻿using NewCohort;
-//delegate
+﻿//Exceptionhandling
+//try,catch,finally
 
-
-//HelloDelegate del = new HelloDelegate(Introduction);
-//del("welcome to delegate class");
-
-
-
-//static void Introduction(string message)
-//{
-//    Console.WriteLine(message);
-//}
-
-List<Employee> emplist = new List<Employee>();
-
-emplist.Add(new Employee() { Id = 1 , Name = "Tolu", Salary =  150000, Experience =  1});
-emplist.Add(new Employee() { Id = 2, Name = "Ben", Salary = 120000, Experience = 2 });
-emplist.Add(new Employee() { Id = 3, Name = "Joy", Salary = 200000, Experience = 7 });
-emplist.Add(new Employee() { Id = 4, Name = "Grace", Salary = 250000, Experience = 6 });
-emplist.Add(new Employee() { Id = 5, Name = "Fola", Salary = 350000, Experience = 5 });
-emplist.Add(new Employee() { Id = 6, Name = "Ada", Salary = 190000, Experience = 5 });
-
-//IsPromotable isPromotable = new IsPromotable(promotemethod);
-
-Employee.PromoteStaff(emplist, y => y.Salary < 2000); //=> lamdba expression
-
-Console.WriteLine("*************experience******************");
-
-//IsPromotable promo = new IsPromotable(experiencemethod);
-
-Employee.PromoteStaff(emplist, emp => emp.Experience >= 2);
-
-
-//bool promotemethod(Employee staff)
-//{
-//    if(staff.Salary < 200000)
-//    {
-//        return true;
-//    }
-//    else
-//    {
-//        return false;
-//    }
-//}
-
-
-bool experiencemethod(Employee emp)
+try
 {
-    if (emp.Experience >= 2)
-        return true;
-    else
-        return false;
+    int[] mynumber = { 2, 3, 4, 5, 6, 7 };
+    Console.WriteLine(mynumber[10]);
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.ToString());
 }
 
 
+int age = 19;
+
+if(age < 20)
+{
+    throw new ArithmeticException("Access denied -  you must be 20 and above");
+}
+else
+{
+    Console.WriteLine("Access granted");
+}
+
 Console.ReadKey();
-
-
-
-
