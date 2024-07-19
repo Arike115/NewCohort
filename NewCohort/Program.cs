@@ -1,25 +1,53 @@
-﻿//anonymous types
+﻿//icollection
+//ilist
+//ienumerable
+//list
 
-using NewCohort;
+List<string> Wears = new List<string>();
+Wears.Add("Skirt");
+Wears.Add("Trouser");
+Wears.Add("Short");
+Wears.Add("Shirt");
+Wears.Add("Singlet");
+Wears.Add("Blouse");
 
-var subject = new { Name = "tolu", age = 345 };
+collectionDisplay(Wears);
+IlistDisplay(Wears);
+ListDisplay(Wears);
+IenumerableDisplay(Wears);
 
-Console.WriteLine(subject.age + "  "+ subject.Name);
-
-var person = new { age = 50, name = "maadey", status = "married" };
-Console.WriteLine(person);
-
-var school = new
+static void collectionDisplay(ICollection<string> mylist)
 {
-    name = "ada",
-    dept = "ss1",
-    Employee = new { age = 50, level = 200 }
-};
+     
+    mylist.Add("Jumpsuite");
+    foreach (var item in mylist)
+        Console.WriteLine("icollection display" + " " +item);
+    Console.WriteLine("*************************");
+}
 
-Console.WriteLine(school.Employee.level);
+static void IlistDisplay(IList<string> mylist)
+{
+    mylist.Insert(3, "joggers");
+    mylist.Add("cargo pant");
+    foreach (var item in mylist)
+        Console.WriteLine("ilistdiplay display" + " " + item);
+    Console.WriteLine("*************************");
+}
 
-//extensions method
-int x = 20;
+static void ListDisplay(List<string> mylist)
+{
 
-var result = x.IsGreaterThan(50);
-Console.WriteLine(result);
+    mylist.Insert(2, "polo");
+    mylist.Add("jeans");
+    mylist.Sort();
+    
+    foreach (var item in mylist)
+        Console.WriteLine("listdiplay display" + " " + item);
+    Console.WriteLine("*************************");
+}
+
+static void IenumerableDisplay(IEnumerable<string> mylist)
+{
+    var data = mylist.First();
+    Console.WriteLine("ienumerable" + " " + data);
+}
