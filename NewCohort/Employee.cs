@@ -6,31 +6,34 @@ using System.Threading.Tasks;
 
 namespace NewCohort
 {
-    //delegate
-    public delegate bool IsPromotable(Employee m);
+  
 
-    //class
-    public class Employee
+    /// <summary>
+    /// /this class is for extension method
+    /// </summary>
+    public static class Employee
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Salary { get; set; }
-        public int Experience  { get; set; }
 
-
-        public static void  PromoteStaff (List<Employee> stafflist, IsPromotable EligibleToPromote)
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string Name { get; set; }
+        /// <summary>
+        /// this method is an extension method for integer
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="v"></param>
+        /// <returns>bool</returns>
+        public static bool IsGreaterThan(this int i , int v) //extension method
         {
-            foreach(var emp in stafflist)
-            {
-                if(EligibleToPromote(emp))
-                {
-                    Console.WriteLine(emp.Name +" " +" is promoted");
-                }
-                else
-                {
-                    Console.WriteLine(emp.Name + " " + "not promoted");
-                }
-            }
+            return i > v;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void VoidMethod()
+        { 
         }
     }
 

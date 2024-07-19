@@ -1,26 +1,25 @@
-﻿//Exceptionhandling
-//try,catch,finally
+﻿//anonymous types
 
-try
+using NewCohort;
+
+var subject = new { Name = "tolu", age = 345 };
+
+Console.WriteLine(subject.age + "  "+ subject.Name);
+
+var person = new { age = 50, name = "maadey", status = "married" };
+Console.WriteLine(person);
+
+var school = new
 {
-    int[] mynumber = { 2, 3, 4, 5, 6, 7 };
-    Console.WriteLine(mynumber[10]);
-}
-catch(Exception ex)
-{
-    Console.WriteLine(ex.ToString());
-}
+    name = "ada",
+    dept = "ss1",
+    Employee = new { age = 50, level = 200 }
+};
 
+Console.WriteLine(school.Employee.level);
 
-int age = 19;
+//extensions method
+int x = 20;
 
-if(age < 20)
-{
-    throw new ArithmeticException("Access denied -  you must be 20 and above");
-}
-else
-{
-    Console.WriteLine("Access granted");
-}
-
-Console.ReadKey();
+var result = x.IsGreaterThan(50);
+Console.WriteLine(result);
