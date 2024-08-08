@@ -1,46 +1,77 @@
-﻿//stack -- first out - last out
-//queue --- first out-first out
-//dictionary
-Dictionary<string, string> staffList = new Dictionary<string, string>();
+﻿//linq
+//language integrated query
+//filtering  : where
+//sorting operators : orderby, orderbydescending, thenby, thenbydescending
+//setOperators : Distinct, union, intersect,except,concat
+//aggregatefunction : average,sum,max,min,count,aggregate
+//elementOperators : first, firstordefault, last, lastordefault,elementat, elementordefault, single, singleordefault
 
-staffList.Add("Ben","Manager");
-staffList.Add("Grace", "Analyst");
-staffList.Add("Joy", "Programmer");
-staffList.Add("Ken", "It");
-staffList.Add("Lola", "Marketer");
+using NewCohort;
+using System.Globalization;
 
-//foreach (var item in staffList)
-//{
-//    Console.WriteLine("key:{0}, value:{1}", item.Key, item.Value);
+//filtering and setoperators
+int[] number = { 6, 8, 4, 2, 10, 16, 18, 14, 12 };
 
-//}
-
-
-//queue(first in -first out)
-
-Queue<int> queue = new Queue<int>();  
-
-queue.Enqueue(41);
-queue.Enqueue(15);
-queue.Enqueue(19);
-queue.Enqueue(21);
-queue.Enqueue(1);
-
-//var data = queue.Dequeue();
-//Console.WriteLine(data);
-
-//var datas =  queue.Dequeue();
-//Console.WriteLine(datas);
-
-Stack<decimal> stacklist = new Stack<decimal>();
-stacklist.Push(7.89m);
-stacklist.Push(90);
-stacklist.Push(45.7m);
-stacklist.Push(111);
-stacklist.Push(01927.89m);
-Console.WriteLine("Number of element in stack : {0}", stacklist.Count());
-while (stacklist.Count > 0)
+// query syntax
+var result = from n in number where n > 4 orderby n descending select n;
+foreach (var y in result)
 {
-    Console.WriteLine(stacklist.Pop() + ", ");
+    Console.WriteLine(y);
 }
-Console.WriteLine("Number of element in stack : {0}", stacklist.Count());
+
+List<Student> studentlist = new List<Student>() {
+
+new Student() { Id = 101, Name = "Lade", Age = 25},
+new Student() { Id = 102, Name = "Lade", Age = 20 },
+new Student() { Id = 103, Name = "Dolapo", Age = 21 },
+new Student() { Id = 104, Name = "Ben", Age = 75},
+new Student() { Id = 105, Name = "Joe", Age = 15},
+
+};
+
+//sorting Operators
+//method sytax
+var data = studentlist.OrderBy(s => s.Name).ThenBy(r => r.Age);
+
+ foreach (var y in data)
+{
+    Console.WriteLine(y.Name +" "+ y.Age);
+}
+
+//set Operators
+
+int[] value1 = { 3, 4, 5, 6, 7, 8, 9, 2, 10, 2, 10, 4, 3 };
+int[] value2 = { 2, 4, 6, 8, 10, 12, 1, 4, 16, 18, 20 };
+
+var distinctmethod = value1.Distinct();
+Console.WriteLine("Distinct:" + String.Join(",",distinctmethod) );
+
+var unionmethod = value1.Union(value2);
+Console.WriteLine("Union:" + String.Join(",", unionmethod));
+
+var intersectmethod = value1.Intersect(value2);
+Console.WriteLine("intersect:" + String.Join(",", intersectmethod));
+
+var exceptmethod = value1.Except(value2);
+Console.WriteLine("except:" + String.Join(",", exceptmethod));
+
+var Concatmethod = value1.Concat(value2);
+Console.WriteLine("Concat:" + String.Join(",", Concatmethod));
+
+
+//Aggregate function
+var sumvalue = number.Sum();
+Console.WriteLine("Sum" + sumvalue);
+var minvalue = number.Min();
+Console.WriteLine("min" + minvalue);
+var maxvalue = number.Max();
+Console.WriteLine("max" + maxvalue);
+var avaragevalue = number.Average();
+Console.WriteLine("avarage" + avaragevalue);
+var aggregatevalue = number.Aggregate((s,r) => (s *r) );
+Console.WriteLine(aggregatevalue);
+
+int[] value3 = { };
+
+var finalresult = value1.ElementAtOrDefault(3);
+Console.WriteLine(finalresult);
