@@ -1,77 +1,78 @@
 ﻿//linq
-//language integrated query
-//filtering  : where
-//sorting operators : orderby, orderbydescending, thenby, thenbydescending
-//setOperators : Distinct, union, intersect,except,concat
-//aggregatefunction : average,sum,max,min,count,aggregate
-//elementOperators : first, firstordefault, last, lastordefault,elementat, elementordefault, single, singleordefault
+//quanitifiers : any,all, contain
+//joining : innerjoin, leftjoin, rightjoin, outerjoin
+//Grouping
 
+//Quantifiers
+//any,all,container
 using NewCohort;
-using System.Globalization;
-
-//filtering and setoperators
-int[] number = { 6, 8, 4, 2, 10, 16, 18, 14, 12 };
-
-// query syntax
-var result = from n in number where n > 4 orderby n descending select n;
-foreach (var y in result)
-{
-    Console.WriteLine(y);
-}
+using NewCohort.Loccation;
 
 List<Student> studentlist = new List<Student>() {
-
-new Student() { Id = 101, Name = "Lade", Age = 25},
-new Student() { Id = 102, Name = "Lade", Age = 20 },
-new Student() { Id = 103, Name = "Dolapo", Age = 21 },
-new Student() { Id = 104, Name = "Ben", Age = 75},
-new Student() { Id = 105, Name = "Joe", Age = 15},
-
+    new Student() { Id = 101 , Name = "fola", Age = 19, SntdId =2},
+    new Student() { Id = 102, Name = "ola", Age = 15, SntdId = 3},
+    new Student() { Id = 103 , Name = "deji", Age = 20, SntdId = 4},
+    new Student() { Id = 104 , Name = "ben", Age = 17, SntdId = 2},
+    new Student() { Id = 105 , Name = "shola", Age = 16, SntdId = 3},
+     new Student() { Id = 106 , Name = "joy", Age = 16},
 };
 
-//sorting Operators
-//method sytax
-var data = studentlist.OrderBy(s => s.Name).ThenBy(r => r.Age);
+List<Standard> stndlist = new List<Standard>()
+{ 
+    new Standard() {StandardId = 1, StandardName = "Beginner level"},
+    new Standard() {StandardId = 2, StandardName = "Junior level"},
+    new Standard() {StandardId = 3, StandardName = "Senior level"},
+    new Standard() {StandardId = 4, StandardName = "Expert"}
+};
 
- foreach (var y in data)
+
+//innerjoin,join
+//query syntax
+var result = from stud in studentlist
+             join stnd in stndlist
+             on stud.SntdId equals stnd.StandardId
+             select new { stud.Name, stnd.StandardName };
+
+//method syntax
+var results = studentlist .Join
+               (stndlist,
+               stud => stud.SntdId,
+               stnd => stnd.StandardId,
+               (stud,stnd) => new 
+               {
+                stud.Name,
+                stnd.StandardName,
+               }).ToList();
+
+
+foreach(var item in results)
 {
-    Console.WriteLine(y.Name +" "+ y.Age);
+    Console.WriteLine($"Name: {item.Name}, StandardName:  {item.StandardName}");
 }
 
-//set Operators
+Console.WriteLine("****************leftjoin*****************");
+//left join , left outerjoin
+var leftjoin = from stud in studentlist //left
+               join stnd in stndlist //right
+               on stud.SntdId equals stnd.StandardId
+               into studnetgroup
+               from sud in studnetgroup.DefaultIfEmpty()
+               select new {
+                   stud.Name, 
+                   stud.Id, 
+                   sud};
 
-int[] value1 = { 3, 4, 5, 6, 7, 8, 9, 2, 10, 2, 10, 4, 3 };
-int[] value2 = { 2, 4, 6, 8, 10, 12, 1, 4, 16, 18, 20 };
-
-var distinctmethod = value1.Distinct();
-Console.WriteLine("Distinct:" + String.Join(",",distinctmethod) );
-
-var unionmethod = value1.Union(value2);
-Console.WriteLine("Union:" + String.Join(",", unionmethod));
-
-var intersectmethod = value1.Intersect(value2);
-Console.WriteLine("intersect:" + String.Join(",", intersectmethod));
-
-var exceptmethod = value1.Except(value2);
-Console.WriteLine("except:" + String.Join(",", exceptmethod));
-
-var Concatmethod = value1.Concat(value2);
-Console.WriteLine("Concat:" + String.Join(",", Concatmethod));
+foreach (var item in leftjoin)
+{
+    Console.WriteLine($"Name: {item.Name}, StandardName:  {item.sud?.StandardName}, Id: {item.Id}");
+}
 
 
-//Aggregate function
-var sumvalue = number.Sum();
-Console.WriteLine("Sum" + sumvalue);
-var minvalue = number.Min();
-Console.WriteLine("min" + minvalue);
-var maxvalue = number.Max();
-Console.WriteLine("max" + maxvalue);
-var avaragevalue = number.Average();
-Console.WriteLine("avarage" + avaragevalue);
-var aggregatevalue = number.Aggregate((s,r) => (s *r) );
-Console.WriteLine(aggregatevalue);
 
-int[] value3 = { };
 
-var finalresult = value1.ElementAtOrDefault(3);
-Console.WriteLine(finalresult);
+//var data = studentlist.Any(x => x.Age == 10 & x.Age > 15);
+//Console.WriteLine(data);
+//var datas = studentlist.All(x =>  x.Age == 15);
+//Console.WriteLine(datas) ;
+//var dates = studentlist.Contains(x => x);
+//Console.WriteLine(dates);
